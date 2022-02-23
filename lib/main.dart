@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Provider<Valor>(
+    return ChangeNotifierProvider<Valor>(
       create: (_) => Valor(),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
