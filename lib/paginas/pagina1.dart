@@ -1,6 +1,8 @@
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_app/paginas/tab_controller.dart';
 import '/services/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class Pagina1 extends StatefulWidget {
   const Pagina1({Key? key}) : super(key: key);
@@ -21,14 +23,46 @@ class _Pagina1State extends State<Pagina1> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 65,
+              height: 70,
+            ),
+            Consumer<Valor>(
+              builder: (context, value, child) => Text(
+                value.lista.length.toString(),
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Consumer<Valor>(
+              builder: (context, value, child) => ElevatedButton(
+                style: elevatedEstilo,
+                onPressed: () {
+                  value.addLista(1);
+                },
+                child: const Text('Somar 1'),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Consumer<Valor>(
+              builder: (context, value, child) => ElevatedButton(
+                style: elevatedEstilo,
+                onPressed: () {
+                  value.removeLista(1);
+                },
+                child: const Text('Retirar 1'),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
             ),
             ElevatedButton(
               style: elevatedEstilo,
               onPressed: () {
-                Get.back();
+                Get.toNamed('/pagina2/');
               },
-              child: const Text('Voltar ao Menu'),
+              child: const Text('Pagina 2'),
             ),
           ],
         ),
